@@ -60,8 +60,11 @@ const ChatBox = () => {
   };
 
   return (
-    <div className="max-w-lg mx-auto my-8 p-4 bg-white rounded-lg shadow-md">
-      <div className="h-60 overflow-y-scroll border-b-2 border-gray-300" ref={chatContainerRef}>
+    <div className='p-4 pt-8'>
+    <div className=" bg-white shadow-md p-2 ">
+            <h2 className="text-2xl font-bold mb-4 text-gray-800 text-center">Chat with Us</h2>
+
+      <div className="h-[30rem] overflow-y-scroll border-b-2 border-gray-300" ref={chatContainerRef}>
         {messages.map((message, index) => (
           <div
             key={index}
@@ -96,6 +99,7 @@ const ChatBox = () => {
         </button>
       </div>
     </div>
+    </div>
   );
 };
 
@@ -114,6 +118,7 @@ const yourData = [
   { question: 'what is your name', answer: 'I am ChatBot, your virtual assistant!' },
   { question: 'tell me a joke', answer: 'Why don\'t scientists trust atoms? Because they make up everything!' },
   { question: 'another joke', answer: 'i love you , is jock for you because i expect better HAHA '  },
+  { question: 'i love you', answer: 'Thank you for asking ! and i love you too' },
   { question: 'do you like pizza', answer: 'I am just a bot, but if I could eat, I would probably love pizza!' },
   { question: 'where are you from', answer: 'I was created by developers and reside in the digital world!' },
   { question: 'tell me about yourself', answer: 'I am ChatBot, here to assist you with any questions or tasks you have!' },
@@ -133,8 +138,7 @@ const yourData = [
   { question: 'pricing', answer: 'Our pricing depends on the services and products you choose. Please contact us for more information.' },
   { question: 'feedback', answer: 'We appreciate your feedback and strive to improve based on your suggestions. Please feel free to share your thoughts with us.' },
   { question: 'k gardai xau ?', answer: 'Ma Chatbot ho , Ma talai sanga kura garna banaiyeko hu, tapai ko sewa ma tatpar . kehi thap jigayasa vaye apthayaro namani sodhanu hola . ' },
-  { question: 'i love you', answer: 'Thank you for asking ! and i love you too' },
-  { question: '', answer: '' },
+  { question: 'who is Verisk Nepal ?', answer: 'Verisk Nepal is the software development and information technology service support center for Verisk Analytics.' },
   { question: '', answer: '' },
 ];
 

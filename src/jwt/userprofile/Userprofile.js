@@ -1,10 +1,18 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { UserOutlined } from '@ant-design/icons';
 import { Avatar, Dropdown, Menu } from 'antd';
 
 const UserProfile = () => {
+  const [username, setUsername] = useState(null);
   const navigate = useNavigate();
+
+  useEffect(() => {
+    const storedUsername = localStorage.getItem('username');  // Get username from local storage
+    if (storedUsername) {
+      setUsername(storedUsername);
+    }
+  }, []);
 
   const handleClick = (e) => {
     const key = Number(e.key);
@@ -15,8 +23,9 @@ const UserProfile = () => {
       navigate('/pages/mybooking/BookingLayout');
     } else if (key === 3) {
       navigate('/pages/playwin/PlayLayout');
-    }else if (key === 4) {
+    } else if (key === 4) {
       localStorage.removeItem('token');
+      localStorage.removeItem('username');  // Clear username on logout
       navigate('/');
     }
   };
@@ -31,13 +40,12 @@ const UserProfile = () => {
 
   return (
     <div className='flex justify-between items-center p-4 bg-#001529 text-white'>
-      <div className='text-xl font-bold'></div>
+      <div className='text-xl font-bold'>
+        {username ? `Welcome, ${username}` : 'Login'} {/* Display username or 'Login' */}
+      </div>
       <div>
-        <Dropdown
-          overlay={menu}
-          placement="bottomRight">
-          <Avatar shape="square"
-            size="small" className="bg-blue-500">
+        <Dropdown overlay={menu} placement="bottomRight">
+          <Avatar shape="square" size="small" className="bg-blue-500">
             <UserOutlined className="text-white" />
           </Avatar>
         </Dropdown>
@@ -47,6 +55,7 @@ const UserProfile = () => {
 };
 
 export default UserProfile;
+
 
 const items = [
   {

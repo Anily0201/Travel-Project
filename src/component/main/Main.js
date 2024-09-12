@@ -14,7 +14,7 @@ const Data = [
         destTitle: 'Patan',
         location: 'Nepal',
         grade: 'CULTURAL RELAX',
-        fees: ' $700 ',
+        fees: ' Rs.700  ',
         description: ' Patan also known as Lalitpur is one of the three royal cities in the Kathmandu Valley of Nepal alongside Kathmandu and Bhaktapur.'
     },
     {
@@ -23,7 +23,7 @@ const Data = [
         destTitle: 'Paris ',
         location: 'France',
         grade: 'CULTURAL RELAX',
-        fees: ' $700 ',
+        fees: ' Rs.700  ',
         description: ' Known as the "City of Light," Paris is renowned for its iconic landmarks such as the Eiffel Tower, Notre-Dame Cathedral, Louvre Museum, and picturesque streets lined with cafes and boutiques.'
     },
     {
@@ -32,7 +32,7 @@ const Data = [
         destTitle: 'Rome',
         location: 'Italy',
         grade: 'CULTURAL RELAX',
-        fees: ' $700 ',
+        fees: ' Rs.700 ',
         description: ' With its ancient ruins, historic sites, and vibrant atmosphere, Rome is a top destination for those interested in history, art, and architecture. Visitors can explore iconic landmarks like the Colosseum, Roman Forum, Vatican City, and Trevi Fountain, while also indulging in delicious Italian cuisine.'
     },
     
@@ -69,7 +69,7 @@ const Main = () => {
                                             </span>
 
                                         </div>
-                                        <div className='price'>
+                                        <div className='price ml-16'>
                                             <h5>{fees}</h5>
                                         </div>
 

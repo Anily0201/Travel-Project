@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 
 const Whynepic = () => {
     const [showMore, setShowMore] = useState(false);
@@ -68,9 +69,11 @@ const Whynepic = () => {
                         Ready to embark on an unforgettable journey? Contact our team today to start planning your next adventure with ExploreNepic.
                     </p>
                     <div className="flex justify-center">
-                        <button className="mt-4 bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-600">
-                            Contact Us
-                        </button>
+                        <Link to="/contact">
+                            <button className="mt-4 bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-600">
+                                Contact Us
+                            </button>
+                        </Link>
                     </div>
                 </div>
             </div>

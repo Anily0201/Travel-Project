@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import { Button, Card, Form, Input, Rate, Tabs } from 'antd';
 import { EyeOutlined, HeartOutlined } from '@ant-design/icons';
-import { useAppContext } from '../../context/ContextApi';
-import { Token } from "../../utils/Storage";
+import { useAppContext } from '../../../../component/context/ContextApi';
+import { Token } from "../../../../jwt/authentication/Storage";
 import { useNavigate } from "react-router-dom";
 import Order from './Order';
 

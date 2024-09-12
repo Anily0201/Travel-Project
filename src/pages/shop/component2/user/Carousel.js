@@ -42,6 +42,7 @@ const Carousel = () => {
         <img src="https://m.media-amazon.com/images/I/81KkrQWEHIL._SX3000_.jpg" alt="" />
       </SwiperSlide>
       
+      
       <SwiperSlide>
         <img src="https://m.media-amazon.com/images/I/61CiqVTRBEL._SX3000_.jpg" alt="" />
       </SwiperSlide>

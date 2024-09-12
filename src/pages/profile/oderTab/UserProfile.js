@@ -1,7 +1,7 @@
 
 import { Form } from "antd";
 import React from "react";
-import { AntdInput, AntdUploder, EditButton, SaveButton } from "../shop/component2/common";
+import { AntdInput, AntdUploder, EditButton, SaveButton } from "../../../component/common";
 
 
 

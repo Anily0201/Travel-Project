@@ -16,7 +16,7 @@ const FlightBooking = () => {
   const [flightOptions, setFlightOptions] = useState([]);
   const [searchResult, setSearchResult] = useState([]);
 
-  // Dummy flight options for demonstration
+  // Dummy flight 
   const dummyOptions = [
     { id: 1, airline: 'Nepal Airline', departure: 'Kathmandu', destination: 'Pokhara', departureTime: '10:00', arrivalTime: '12:00', price: '$200' },
     { id: 2, airline: 'Nepal Airline', departure: 'ktm', destination: 'Bhutan', departureTime: '10:00', arrivalTime: '12:00', price: '$200' },

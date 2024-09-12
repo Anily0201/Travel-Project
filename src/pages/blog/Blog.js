@@ -1,215 +1,135 @@
-
 import React, { useState } from 'react';
-import { Card, Typography, Button, Modal } from 'antd';
-import {
-  LikeOutlined,
-  HeartOutlined,
-  MessageOutlined,
-  ShareAltOutlined,
-} from '@ant-design/icons';
+import { Layout, Input, Button, message, Avatar, Modal, Upload, Card } from 'antd';
+import { UserOutlined, UploadOutlined } from '@ant-design/icons';
+import TopBar from '../../component/layout/blogLayout/TopBar';
+import LeftSidebar from '../../component/layout/blogLayout/LeftSidebar';
+import RightSidebar from '../../component/layout/blogLayout/RightSidebar';
 
-import {
-  FacebookMessengerShareButton,
-  TwitterShareButton,
-  WhatsappShareButton,
-  EmailShareButton,
-  WeiboShareButton,
-  LineShareButton,
-  TelegramShareButton,
-  RedditShareButton,
-  VKShareButton,
-  PocketShareButton,
-  InstapaperShareButton,
-  FacebookShareButton,
-} from 'react-share';
+const { Content } = Layout;
 
-const { Title, Paragraph } = Typography;
 const Blog = () => {
-  const [likes, setLikes] = React.useState(0);
-  const [isLiked, setIsLiked] = React.useState(false);
-  const [hearts, setHearts] = React.useState(0);
-  const [isHearted, setIsHearted] = React.useState(false);
-  const [shares, setShares] = React.useState(0);
-  const [shareModalVisible, setShareModalVisible] = React.useState(false);
+  const [blogs, setBlogs] = useState([]);
+  const [newBlogTitle, setNewBlogTitle] = useState('');
+  const [newBlogContent, setNewBlogContent] = useState('');
+  const [imageFile, setImageFile] = useState(null);
+  const [isModalVisible, setIsModalVisible] = useState(false);
 
-  const handleLike = () => {
-    setLikes(isLiked ? likes - 1 : likes + 1);
-    setIsLiked(!isLiked);
+  const handlePostBlog = () => {
+    if (newBlogTitle.trim() !== '' && newBlogContent.trim() !== '') {
+      const newBlog = {
+        id: blogs.length + 1,
+        title: newBlogTitle.trim(),
+        content: newBlogContent.trim(),
+        author: 'Jay Yadav',
+        date: new Date().toLocaleDateString(),
+        image: imageFile ? URL.createObjectURL(imageFile) : null,
+      };
+      setBlogs([newBlog, ...blogs]);
 
+      // Reset the form fields for the next post
+      setNewBlogTitle('');
+      setNewBlogContent('');
+      setImageFile(null);
+      setIsModalVisible(false);
+
+      message.success('Blog posted successfully!');
+    } else {
+      message.error('Please enter a title and some content before posting.');
+    }
   };
- 
 
-  const handleHeart = () => {
-    setHearts(isHearted ? hearts - 1 : hearts + 1);
-    setIsHearted(!isHearted);
+  const handleImageUpload = ({ file }) => {
+    setImageFile(file);
   };
 
-  const handleShare = () => {
-    setShares(shares + 1);
-    setShareModalVisible(true);
+  const handleCancel = () => {
+    setIsModalVisible(false);
+    // Ensure form resets when the modal closes
+    setNewBlogTitle('');
+    setNewBlogContent('');
+    setImageFile(null);
   };
-
-  const closeShareModal = () => {
-    setShareModalVisible(false);
-  };
-
-  const blogs = [
-    {
-      id:1,
-      title: 'Everest Base Camp: A Journey to the Top of the World',
-      image: 'https://scontent.fktm20-1.fna.fbcdn.net/v/t39.30808-6/432263105_904668681661505_5211106915794798958_n.jpg?stp=dst-jpg_p843x403&_nc_cat=1&ccb=1-7&_nc_sid=5f2048&_nc_ohc=p-zLOHYgOUYAX-KHyyq&_nc_ht=scontent.fktm20-1.fna&oh=00_AfBpd598yDjpcWqFuH_4vTA1kfBoHx96wdCjYti6pX_vYw&oe=65F68E74',
-      content:
-        'Embark on a thrilling trek to the Everest Base Camp, surrounded by towering peaks and breathtaking landscapes. Experience the ultimate adventure at the roof of the world.',
-    },
-    {
-      title: 'Everest Base Camp: A Journey to the Top of the World',
-      image: 'https://scontent.fktm20-1.fna.fbcdn.net/v/t39.30808-6/432263105_904668681661505_5211106915794798958_n.jpg?stp=dst-jpg_p843x403&_nc_cat=1&ccb=1-7&_nc_sid=5f2048&_nc_ohc=p-zLOHYgOUYAX-KHyyq&_nc_ht=scontent.fktm20-1.fna&oh=00_AfBpd598yDjpcWqFuH_4vTA1kfBoHx96wdCjYti6pX_vYw&oe=65F68E74',
-      content:
-        'Embark on a thrilling trek to the Everest Base Camp, surrounded by towering peaks and breathtaking landscapes. Experience the ultimate adventure at the roof of the world.',
-    },
-    {
-      title: 'Everest Base Camp: A Journey to the Top of the World',
-      image: 'https://scontent.fktm20-1.fna.fbcdn.net/v/t39.30808-6/432263105_904668681661505_5211106915794798958_n.jpg?stp=dst-jpg_p843x403&_nc_cat=1&ccb=1-7&_nc_sid=5f2048&_nc_ohc=p-zLOHYgOUYAX-KHyyq&_nc_ht=scontent.fktm20-1.fna&oh=00_AfBpd598yDjpcWqFuH_4vTA1kfBoHx96wdCjYti6pX_vYw&oe=65F68E74',
-      content:
-        'Embark on a thrilling trek to the Everest Base Camp, surrounded by towering peaks and breathtaking landscapes. Experience the ultimate adventure at the roof of the world.',
-    },
-    {
-      title: 'Everest Base Camp: A Journey to the Top of the World',
-      image: 'https://scontent.fktm20-1.fna.fbcdn.net/v/t39.30808-6/432263105_904668681661505_5211106915794798958_n.jpg?stp=dst-jpg_p843x403&_nc_cat=1&ccb=1-7&_nc_sid=5f2048&_nc_ohc=p-zLOHYgOUYAX-KHyyq&_nc_ht=scontent.fktm20-1.fna&oh=00_AfBpd598yDjpcWqFuH_4vTA1kfBoHx96wdCjYti6pX_vYw&oe=65F68E74',
-      content:
-        'Embark on a thrilling trek to the Everest Base Camp, surrounded by towering peaks and breathtaking landscapes. Experience the ultimate adventure at the roof of the world.',
-    },
-    {
-      title: 'Everest Base Camp: A Journey to the Top of the World',
-      image: 'https://scontent.fktm20-1.fna.fbcdn.net/v/t39.30808-6/432263105_904668681661505_5211106915794798958_n.jpg?stp=dst-jpg_p843x403&_nc_cat=1&ccb=1-7&_nc_sid=5f2048&_nc_ohc=p-zLOHYgOUYAX-KHyyq&_nc_ht=scontent.fktm20-1.fna&oh=00_AfBpd598yDjpcWqFuH_4vTA1kfBoHx96wdCjYti6pX_vYw&oe=65F68E74',
-      content:
-        'Embark on a thrilling trek to the Everest Base Camp, surrounded by towering peaks and breathtaking landscapes. Experience the ultimate adventure at the roof of the world.',
-    },
-    {
-      title: 'Everest Base Camp: A Journey to the Top of the World',
-      image: 'https://scontent.fktm20-1.fna.fbcdn.net/v/t39.30808-6/432263105_904668681661505_5211106915794798958_n.jpg?stp=dst-jpg_p843x403&_nc_cat=1&ccb=1-7&_nc_sid=5f2048&_nc_ohc=p-zLOHYgOUYAX-KHyyq&_nc_ht=scontent.fktm20-1.fna&oh=00_AfBpd598yDjpcWqFuH_4vTA1kfBoHx96wdCjYti6pX_vYw&oe=65F68E74',
-      content:
-        'Embark on a thrilling trek to the Everest Base Camp, surrounded by towering peaks and breathtaking landscapes. Experience the ultimate adventure at the roof of the world.',
-    },
-  ];
 
   return (
-    <div className="blog-container grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-     {blogs.map((blog, index) => (
-        <Card key={index} className="blog-card p-4 shadow-lg bg-gradient-to-br from-purple-500 via-pink-500 to-red-500">
-        <img className="rounded-md mb-4" src={blog.image} alt={blog.title} />
-        <Title level={4} className="mb-2 text-white">
-          {blog.title}
-        </Title>
-        <Paragraph className="mb-4 text-white">{blog.content}</Paragraph>
-        <div className="blog-actions flex space-x-4">
-            <Button
-              icon={<LikeOutlined />}
-              onClick={handleLike}
-              type={isLiked? 'primary' : 'default'}
-              className="flex items-center"
-            >
-              {likes} Likes
-            </Button>
-            <Button
-              icon={<HeartOutlined />}
-              onClick={handleHeart}
-              type={isHearted ? 'danger' : 'default'}
-              className="flex items-center"
-            >
-              {hearts} Hearts
-            </Button>
-            <Button className="flex items-center">
-              {shares} Shares
-            </Button>
-            <Button icon={<ShareAltOutlined />} onClick={handleShare} className="flex items-center">
-              Share
-            </Button>
+    <Layout className="min-h-screen bg-gray-100">
+      <TopBar className="fixed bg-white shadow-md" />
+      <div className="flex pt-2">
+        <LeftSidebar className="w-1/4 h-screen bg-gray-100 fixed left-0 top-16" />
+        <Content className="flex-grow p-4 ml-2 mr-2 bg-gray-100">
+          <div className="bg-white p-2 rounded-lg shadow-md mb-4">
+            <Input.TextArea
+              value={newBlogContent}
+              onClick={() => setIsModalVisible(true)}
+              placeholder="What's on your mind?"
+              autoSize={{ minRows: 2, maxRows: 6 }}
+              className="mb-2"
+            />
           </div>
-        </Card>
-      ))}
+
+          <div className="grid grid-cols-1 gap-6">
+            {blogs.map((blog) => (
+              <Card key={blog.id} className="bg-white shadow-lg rounded-lg overflow-hidden">
+                <div className="flex items-center mb-4">
+                  <Avatar icon={<UserOutlined />} className="mr-4" />
+                  <div>
+                    <p className="font-semibold">{blog.author}</p>
+                    <p className="text-gray-500">{blog.date}</p>
+                  </div>
+                </div>  
+                <img src={blog.image} alt={blog.title} className="w-full h-64 object-cover object-center" />
+                <div className="p-6">
+                  <h2 className="text-xl font-bold mb-2">{blog.title}</h2>
+                  <p className="text-gray-800">{blog.content}</p>
+                </div>
+              </Card>
+              // <div key={blog.id} className="bg-white rounded-lg shadow-md p-6 max-h-64 ">
+              //   <div className="flex items-center mb-4">
+              //     <Avatar icon={<UserOutlined />} className="mr-4" />
+              //     <div>
+              //       <p className="font-semibold">{blog.author}</p>
+              //       <p className="text-gray-500">{blog.date}</p>
+              //     </div>
+              //   </div>
+              //   <h2 className="font-bold text-xl">{blog.title}</h2>
+              //   <p className="mt-4 text-ellipsis overflow-hidden">{blog.content}</p>
+              //   {blog.image && <img src={blog.image} alt={blog.title} className="mt-2 max-h-72 object-cover" />}
+              // </div>
+            ))}
+          </div>
+        </Content>
+        <RightSidebar className="w-1/4 h-screen bg-gray-100 fixed right-0" />
+      </div>
 
       <Modal
-       title={<Title level={4} className="text-white">Share on Social Media</Title>}
-       visible={shareModalVisible}
-       onCancel={closeShareModal}
-       footer={null}
-       bodyStyle={{ padding: 0 }}
-     >
-        <div className="flex flex-wrap gap-4 p-8">
-          <FacebookShareButton url={window.location.href}>
-            <Button>
-              <i className="fab fa-facebook-f mr-2"></i>
-              Facebook
-            </Button>
-          </FacebookShareButton>
-          <FacebookMessengerShareButton url={window.location.href}>
-            <Button>
-              <i className="fab fa-facebook-messenger mr-2"></i>
-              Messenger
-            </Button>
-          </FacebookMessengerShareButton>
-          <TwitterShareButton url={window.location.href}>
-            <Button>
-              <i className="fab fa-twitter mr-2"></i>
-              Twitter
-            </Button>
-          </TwitterShareButton>
-          <WhatsappShareButton url={window.location.href}>
-            <Button>
-              <i className="fab fa-whatsapp mr-2"></i>
-              WhatsApp
-            </Button>
-          </WhatsappShareButton>
-         
-          <TelegramShareButton url={window.location.href}>
-            <Button>
-              <i className="fab fa-telegram-plane mr-2"></i>
-              Telegram
-            </Button>
-          </TelegramShareButton>
-          <WeiboShareButton url={window.location.href}>
-            <Button>
-              <i className="fab fa-weibo mr-2"></i>
-              Weibo
-            </Button>
-          </WeiboShareButton>
-          <LineShareButton url={window.location.href}>
-            <Button>
-              <i className="fab fa-line mr-2"></i>
-              Line
-            </Button>
-          </LineShareButton>
-          <RedditShareButton url={window.location.href}>
-            <Button>
-              <i className="fab fa-reddit-alien mr-2"></i>
-              Reddit
-            </Button>
-          </RedditShareButton>
-          <VKShareButton url={window.location.href}>
-            <Button>
-              <i className="fab fa-vk mr-2"></i>
-              VK
-            </Button>
-          </VKShareButton>
-          <PocketShareButton url={window.location.href}>
-            <Button>
-              <i className="fab fa-get-pocket mr-2"></i>
-              Pocket
-            </Button>
-          </PocketShareButton>
-          <InstapaperShareButton url={window.location.href}>
-            <Button>
-              <i className="fab fa-instapaper mr-2"></i>
-              Instapaper
-            </Button>
-          </InstapaperShareButton>
-         
-        </div>
+        title="Create Post"
+        visible={isModalVisible}
+        onOk={handlePostBlog}
+        onCancel={handleCancel}
+        okText="Post"
+        cancelText="Cancel"
+        okButtonProps={{
+          className: "bg-green-500 hover:bg-green-600 text-white"
+        }}
+      >
+        <Input
+          value={newBlogTitle}
+          onChange={(e) => setNewBlogTitle(e.target.value)}
+          placeholder="Title"
+          className="mb-4"
+        />
+        <Input.TextArea
+          value={newBlogContent}
+          onChange={(e) => setNewBlogContent(e.target.value)}
+          placeholder="What's on your mind?"
+          autoSize={{ minRows: 3, maxRows: 6 }}
+          className="mb-4"
+        />
+        <Upload beforeUpload={() => false} onChange={handleImageUpload}>
+          <Button icon={<UploadOutlined />}>Upload Image</Button>
+        </Upload>
       </Modal>
-    </div>
+    </Layout>
   );
 };
 
 export default Blog;
-

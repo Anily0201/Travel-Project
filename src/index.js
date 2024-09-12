@@ -1,8 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './App';
-import reportWebVitals from './reportWebVitals';
-import { AppContextProvider } from '../src/pages/shop/context/ContextApi'; // Import the AppContextProvider
+// import reportWebVitals from './reportWebVitals';
+import { AppContextProvider } from './component/context/ContextApi'; // Import the AppContextProvider
 
 ReactDOM.render(
   <React.StrictMode>
@@ -13,4 +13,4 @@ ReactDOM.render(
   document.getElementById('root')
 );
 
-reportWebVitals();
+// reportWebVitals();

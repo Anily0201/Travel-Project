@@ -1,9 +1,29 @@
-import React from 'react';
-import AnnapurnaImage from '../../component/assets/anna1.jpg'; // Import an image for Annapurna
-import { SmileOutlined, GlobalOutlined, EnvironmentOutlined, HeartOutlined } from '@ant-design/icons'; // Import Ant Design icons
-import Location from '../../component/Location';
+import React, { useEffect, useState } from 'react';
+import AnnapurnaImage from '../../component/assets/anna1.jpg';
+import { SmileOutlined, GlobalOutlined, EnvironmentOutlined, HeartOutlined } from '@ant-design/icons';
+import Location from '../../component/others/Location';
+// import Location from '../../component/others/Location';
 
 const About = () => {
+
+  const [ abouts , setAbouts] = useState([]);
+  const [error , setError] =useState(null) ;
+
+  useEffect (()=>{
+    fetch('https://localhost:7292/api/About')
+    .then(response=>response.json())
+    .then(data=>{
+      console.log(data);
+
+      setAbouts(data);
+      console.log(data , 'test')
+
+    })
+    .catch(error=>{
+      setError(error);
+    })
+  }, []);
+
 
   const backgroundImageUrl = 'https://assets-global.website-files.com/60394056d54b5a8033fd50c3/604b6438871507f2da4e18a5_photo_1545411312-p-1080.jpeg';
   const background2ImageUrl = 'https://images.trvl-media.com/lodging/19000000/18160000/18153500/18153427/cfa83c34.jpg?impolicy=resizecrop&rw=1200&ra=fit';

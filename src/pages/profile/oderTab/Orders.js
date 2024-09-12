@@ -2,13 +2,13 @@
 
 import React from "react";
 import { Tabs } from "antd";
-import Myorder from "./order/Myorder";
-import Trackorder from "./order/Trackorder";
-import ToShip from "./order/ToShip";
-import ToPay from "./order/ToPay";
-import ToReceive from "./order/ToReceive";
-import CancelOrder from "./order/CancelOrder";
-import CancledRefund from "./order/CancledRefund";
+import Myorder from "../order/Myorder"
+import Trackorder from "../order/Trackorder";
+import ToShip from "../order/ToShip";
+import ToPay from "../order/ToPay";
+import ToReceive from "../order/ToReceive";
+import CancelOrder from "../order/CancelOrder";
+import CancledRefund from "../order/CancledRefund";
 const onChange = (key) => {
   console.log(key);
 };

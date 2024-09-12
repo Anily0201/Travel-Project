@@ -1,39 +1,37 @@
 import { Button, Card, Form, Input, notification } from "antd";
 import React from "react";
-
 import { Link, useNavigate } from "react-router-dom";
-import { auth } from "../../pages/shop/utils/Items";
+import axios from "axios";
 import { LeftCircleFilled } from "@ant-design/icons";
 
 const Login = () => {
-  const data = auth?.[0];
-
   const navigate = useNavigate();
-  const onFinish = (values) => {
-    if (values?.user_name === data.type) {
-      navigate("/");
-      notification.info({ message: "Login successfully!" });
-      localStorage.setItem("token", JSON.stringify(data));
-    } else if (values?.user_name === "admin") {
-      const admindata = auth?.map((item) => {
-        return { ...item, name: values.user_name, type: "admin" };
+
+  const onFinish = async (values) => {
+    try {
+      const response = await axios.post("https://localhost:7292/api/Auth/login", {
+        username: values.UserName,
+        password: values.Password,
       });
-      notification.info({ message: "Login successfully!" });
-      localStorage.setItem("token", JSON.stringify(admindata?.[0]));
-      navigate("/admin");
-    } else {
-      notification.info({
-        message: "Something want to wrong!",
+
+      if (response.data) {
+        notification.success({ message: "Login successfully!" });
+        localStorage.setItem("token", JSON.stringify(response.data.token));
+        navigate("/"); 
+      } else {
+        notification.error({
+          message: "Invalid username or password!",
+          placement: "top",
+        });
+      }
+    } catch (error) {
+      notification.error({
+        message: "Login failed! Please try again later.",
         placement: "top",
       });
     }
   };
-  // React.useEffect(() => {
-  //   if (logindata?.token) {
-  //     localStorage.setItem("token", JSON.stringify(logindata?.token));
-  //     navigate("/");
-  //   }
-  // }, [logindata]);
+
   return (
     <div className="w-96 h-auto m-auto pt-20">
       <Card className="opacity-80 bg-white">
@@ -46,24 +44,23 @@ const Login = () => {
           </div>
           <Form layout="vertical" onFinish={onFinish}>
             <Form.Item
-              name={"user_name"}
+              name={"UserName"}
               label={"User Name"}
               rules={[
                 {
-                  required: "true",
-
-                  message: "The input  Valid email!",
+                  required: true,
+                  message: "Please input your Username!",
                 },
               ]}
             >
               <Input placeholder="Username" />
             </Form.Item>
             <Form.Item
-              name={"password"}
+              name={"Password"}
               label={"Password"}
               rules={[
                 {
-                  required: "true",
+                  required: true,
                   message: "Please input your Password!",
                 },
               ]}
@@ -78,15 +75,14 @@ const Login = () => {
                 style={{ boxShadow: '0px 4px 6px rgba(0, 0, 0, 0.1)' }}
               >
                 Login
-                <span className="absolute right-0 top-0 -mt-1 -mr-2 h-6 w-6 rounded-full bg-red-500 flex items-center justify-center text-white font-bold text-xs animate-ping"></span>
-                <span className="absolute right-0 top-0 -mt-1 -mr-2 h-4 w-4 rounded-full bg-red-500 opacity-75 flex items-center justify-center text-white font-bold text-xs"></span>
               </Button>
             </div>
-
-
           </Form>
           <div>
-            Don't have an account? <Link to="/auth/signup" className="text-blue-500 hover:underline">Sign Up</Link>
+            Don't have an account?{" "}
+            <Link to="/auth/signup" className="text-blue-500 hover:underline">
+              Sign Up
+            </Link>
           </div>
         </div>
       </Card>

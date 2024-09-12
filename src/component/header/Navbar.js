@@ -5,14 +5,15 @@ import logo from '../assets/logo.jpg.png';
 // import SearchBar from '../SearchBar';
 import OrderPopup from '../OrderPopup/OrderPopup';
 import Order from '../../pages/shop/component2/user/Order';
-import { Token, name } from '../../pages/shop/utils/Storage';
+import { Token, username } from '../../jwt/authentication/Storage';
 import { Badge, Drawer, Image, Button, message, Menu, Dropdown } from 'antd';
 import { DeleteOutlined, MinusCircleFilled, PlusCircleFilled, } from '@ant-design/icons';
-import { useAppContext } from '../../pages/shop/context/ContextApi';
-import UserProfile from '../../pages/shop/layout/header/Userprofile';
+import { useAppContext } from '../context/ContextApi';
+import UserProfile from '../../jwt/userprofile/Userprofile';
 
 
 const Navbar = () => {
+  const { token, username } = Token() || {};
   const [orderPopup, setOrderPopup] = useState(false);
   const handleOrderPopup = () => {
     setOrderPopup(true);
@@ -20,7 +21,7 @@ const Navbar = () => {
 
   const { appState, updateState } = useAppContext();
   const [myOrder, setMyOrder] = React.useState([]);
-  const { token, name } = Token()
+  // const { token, username } = Token()
   const [open, setOpen] = React.useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
 
@@ -31,7 +32,6 @@ const Navbar = () => {
     } else {
       message.info('You are not login , Please login to Place your Order')
     }
-
   };
 
 
@@ -156,19 +156,19 @@ const Navbar = () => {
   const menuAbout = (
     <Menu>
       <Menu.Item key="1">
-        <Link to="/about1/Whynepic">Why ExploreNepic ?</Link>
+        <Link to="/about/Whynepic">Why ExploreNepic ?</Link>
       </Menu.Item>
       <Menu.Item key="2">
-        <Link to="/about1/Ourteam">Our Team</Link>
+        <Link to="/about/Ourteam">Our Team</Link>
       </Menu.Item>
       <Menu.Item key="3">
-        <Link to="/about1/Awards">Awards and Recognitions</Link>
+        <Link to="/about/Awards">Awards and Recognitions</Link>
       </Menu.Item>
       <Menu.Item key="4">
-        <Link to="/about1/LatestTripRv">Latest Trip Review</Link>
+        <Link to="/about/LatestTripRv">Latest Trip Review</Link>
       </Menu.Item>
       <Menu.Item key="5">
-        <Link to="/about1/Career">Career</Link>
+        <Link to="/about/Career">Career</Link>
       </Menu.Item>
     </Menu>
   );
@@ -239,7 +239,7 @@ const Navbar = () => {
             </Link>
           </li>
           <li className="mr-2">
-            <Link to="/about1/about" className="text-white font-bold">
+            <Link to="/About" className="text-white font-bold">
               <DropdownMenu menu={menuAbout} />
             </Link>
           </li>
@@ -351,7 +351,7 @@ const Navbar = () => {
 
         )}
         <div className="flex items-center">
-          <div className="text-white font-semibold ">{name}</div>
+          <div className="text-white font-semibold ">{username}</div>
 
           {token ? (
             <UserProfile />

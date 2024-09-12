@@ -1,25 +1,25 @@
 import React from 'react';
-import 'aos/dist/aos.css'; 
+import 'aos/dist/aos.css';
 import AOS from 'aos';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import Navbar from './component/header/Navbar';
-import Home from './pages/Home';
-import Contact from './pages/Contact';
+import Contact from './pages/contact/Contact';
 import Service from './pages/services/Service';
 import './App.css';
 import Footer from './component/footer/Footer';
 import Blog from './pages/blog/Blog';
 import './index.css';
-import Whynepic from './pages/about1/Whynepic';
-import Ourteam from './pages/about1/Ourteam';
-import Awards from './pages/about1/Awards';
+import Whynepic from './pages/about/Whynepic';
+import Ourteam from './pages/about/Ourteam';
+import Awards from './pages/about/Awards';
 import Destinations from './pages/Destination/Destinations';
 import NepalTour from './pages/Destination/NepalTour';
 import IndiaTour from './pages/Destination/IndiaTour';
 import BhutanTour from './pages/Destination/BhutanTour';
 import MultipleCountry from './pages/Destination/MultipleCountry';
 import Shop from './pages/shop/Shop';
-import About from './pages/about1/About';
+// import About from './pages/about/About';
+import About from './pages/about/About'
 import TravelStories from './pages/blog/TravelStories';
 import TravelTips from './pages/blog/TravelTips';
 import YourBlog from './pages/blog/YourBlog';
@@ -31,15 +31,21 @@ import TransServices from './pages/services/TransServices';
 import TourPackages from './pages/services/TourPackages';
 import HotelReservations from './pages/services/HotelReservations';
 import ServiceDetail from './pages/services/ServiceDetail';
-import LatestTripRv from './pages/about1/LatestTripRv';
-import Career from './pages/about1/Career';
+import LatestTripRv from './pages/about/LatestTripRv';
+import Career from './pages/about/Career';
 import UserDetail from './pages/shop/component2/user/UserDetail';
 import SignUp from './component/auth/Signup';
 import Login from './component/auth/Login';
-import Profile from './pages/profile/Profile';
+import Profile from './pages/profile/oderTab/Profile';
 import PlayLayout from './pages/playwin/PlayLayout';
 import BookingLayout from './pages/mybooking/BookingLayout';
 
+
+// import BlogDashboard from './pages/BlogDashboard/BlogDashboard';
+import UserProfile from './component/blogs/UserProfile/UserProfile';
+import Groups from './component/blogs/Groups/Groups';
+import AdminPage from './pages/admin/AdminPage';
+import Home from './pages/homePage/Home';
 
 
 const App = () => {
@@ -48,7 +54,7 @@ const App = () => {
     AOS.init({
       offset: 100,
 
-      duration:   900,
+      duration: 900,
       easing: "ease-in-sine",
       delay: 100,
     });
@@ -63,16 +69,16 @@ const App = () => {
           <Route path="/" element={<Home />} />
           <Route path="/Destination/Destinations" element={<Destinations />} />
           <Route path="/contact" element={<Contact />} />
-          <Route path="/about1/Whynepic" element={<Whynepic />} />
-          <Route path="/about1/Ourteam" element={<Ourteam />} />
-          <Route path="/about1/Awards" element={<Awards />} />
-          <Route path="/about1/Career" element={<Career />} />
-          <Route path="/about1/LatestTripRv" element={<LatestTripRv />} />
+          <Route path="/about/Whynepic" element={<Whynepic />} />
+          <Route path="/about/Ourteam" element={<Ourteam />} />
+          <Route path="/about/Awards" element={<Awards />} />
+          <Route path="/about/Career" element={<Career />} />
+          <Route path="/about/LatestTripRv" element={<LatestTripRv />} />
           <Route path="/Destination/NepalTour" element={<NepalTour />} />
           <Route path="/Destination/IndiaTour" element={<IndiaTour />} />
           <Route path="/Destination/BhutanTour" element={<BhutanTour />} />
           <Route path="/Destination/MultipleCountry" element={<MultipleCountry />} />
-          <Route path="/about1/About" element={<About />} />
+          <Route path="/About" element={<About />} />
           <Route path="/blog/blog" element={<Blog />} />
           <Route path="/blog/TravelStories" element={<TravelStories />} />
           <Route path="/blog/TravelTips" element={<TravelTips />} />
@@ -93,6 +99,14 @@ const App = () => {
           <Route path="/pages/mybooking/BookingLayout" element={<BookingLayout />} />
           <Route path="/service/:id" element={<ServiceDetail />} />
           <Route path="userdetail/:id" element={<UserDetail />} />
+          <Route path="/AdminPage" element={<AdminPage />} />
+
+
+          {/* <Route path="/" element={<BlogDashboard />} /> */}
+          <Route path="/profile" element={<UserProfile />} />
+          <Route path="/groups" element={<Groups />} />
+
+
         </Routes>
         <Footer />
       </div>
