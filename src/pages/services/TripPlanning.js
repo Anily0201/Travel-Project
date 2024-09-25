@@ -4,10 +4,9 @@ import { Link } from 'react-router-dom';
 const TripPlanning = () => {
   return (
     <div className="bg-gray-100 min-h-screen">
-      {/* Hero Section */}
       <div
         className="bg-cover bg-center py-32 px-6"
-        style={{ backgroundImage: 'url("https://source.unsplash.com/1600x900/?bhutan")' }}
+        style={{ backgroundImage: 'url("https://worldtourismforum.wordpress.com/wp-content/uploads/2016/11/800px-x-500px-e28093-womens-wear.png")' }}
       >
         <h1 className="text-4xl md:text-5xl font-bold text-white mb-4">Plan Your Dream Trip</h1>
         <p className="text-lg text-white max-w-xl mb-8">
@@ -21,11 +20,9 @@ const TripPlanning = () => {
         </Link>
       </div>
 
-      {/* Main Content */}
       <div className="container mx-auto py-12 px-6">
         <h2 className="text-3xl font-semibold text-gray-800 mb-8">Popular Planning Options</h2>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {/* Trip Planning Cards */}
           <div className="bg-white rounded-lg shadow-lg p-6">
             <h3 className="text-xl font-semibold mb-4">Create Your Itinerary</h3>
             <p className="text-gray-600 mb-4">
@@ -75,7 +72,6 @@ const TripPlanning = () => {
     </Link>
   </div>
 
-  {/* Third Data */}
   <div className="bg-white rounded-lg shadow-lg p-6">
     <h3 className="text-xl font-semibold mb-4">Book Transportation</h3>
     <p className="text-gray-600 mb-4">
@@ -89,7 +85,6 @@ const TripPlanning = () => {
     </Link>
   </div>
 
-  {/* Fourth Data */}
   <div className="bg-white rounded-lg shadow-lg p-6">
     <h3 className="text-xl font-semibold mb-4">Explore Dining Options</h3>
     <p className="text-gray-600 mb-4">
@@ -103,7 +98,6 @@ const TripPlanning = () => {
     </Link>
   </div>
 
-  {/* Fifth Data */}
   <div className="bg-white rounded-lg shadow-lg p-6">
     <h3 className="text-xl font-semibold mb-4">Pack Your Bags</h3>
     <p className="text-gray-600 mb-4">

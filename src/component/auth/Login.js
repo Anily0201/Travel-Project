@@ -1,23 +1,44 @@
 import { Button, Card, Form, Input, notification } from "antd";
-import React from "react";
+import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import { LeftCircleFilled } from "@ant-design/icons";
+import {jwtDecode} from "jwt-decode"; 
 
 const Login = () => {
   const navigate = useNavigate();
+  const [loading, setLoading] = useState(false); 
 
   const onFinish = async (values) => {
+    const trimmedValues = {
+      username: values.UserName.trim(),
+      password: values.Password.trim(),
+    }; 
+
+    setLoading(true); 
     try {
       const response = await axios.post("https://localhost:7292/api/Auth/login", {
-        username: values.UserName,
-        password: values.Password,
+        username: trimmedValues.username,
+        password: trimmedValues.password,
       });
 
-      if (response.data) {
-        notification.success({ message: "Login successfully!" });
-        localStorage.setItem("token", JSON.stringify(response.data.token));
-        navigate("/"); 
+      if (response.data && response.data.token) {
+        const token = response.data.token;
+
+        
+        const decodedToken = jwtDecode(token);
+        if (decodedToken.exp * 1000 > Date.now()) {
+          localStorage.setItem("token", JSON.stringify(token));
+          notification.success({ message: "Login successfully!" });
+
+          if (decodedToken.role === "admin") {
+            navigate("/AdminDashboard");
+          } else {
+            navigate("/"); 
+          }
+        } else {
+          notification.error({ message: "Token has expired. Please login again." });
+        }
       } else {
         notification.error({
           message: "Invalid username or password!",
@@ -25,10 +46,16 @@ const Login = () => {
         });
       }
     } catch (error) {
-      notification.error({
-        message: "Login failed! Please try again later.",
-        placement: "top",
-      });
+      if (error.response && error.response.status === 401) {
+        notification.error({ message: "Invalid credentials!" });
+      } else {
+        notification.error({
+          message: "Login failed! Please try again later.",
+          placement: "top",
+        });
+      }
+    } finally {
+      setLoading(false); 
     }
   };
 
@@ -71,8 +98,9 @@ const Login = () => {
             <div className="flex justify-between">
               <Button
                 htmlType="submit"
+                loading={loading} // Added loading state to the button
                 className="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded shadow transform transition-transform duration-300 ease-in-out hover:scale-105"
-                style={{ boxShadow: '0px 4px 6px rgba(0, 0, 0, 0.1)' }}
+                style={{ boxShadow: "0px 4px 6px rgba(0, 0, 0, 0.1)" }}
               >
                 Login
               </Button>

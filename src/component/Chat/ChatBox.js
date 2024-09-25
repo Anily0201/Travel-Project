@@ -110,7 +110,8 @@ export default ChatBox;
 
 const yourData = [
   { question: 'hello', answer: 'Hello there!' },
-  { question: 'hi', answer: 'Hello, How can i help you!' },
+  { question: 'hi', answer: 'Hello, Well-come To ExploricNepic , How can i help you!' },
+  { question: 'Verish Nepal', answer: 'Verisk Nepal is an IT company based in Pulchowk, Lalitpur, and a subsidiary of Verisk Analytics. It provides software development, data analytics, and IT support for global industries like insurance and financial services.' },
   { question: 'how are you', answer: 'i\m fine . thank you ! and what about you ? ' },
   { question: 'weather', answer: 'The weather is currently sunny!' },
   { question: 'time', answer: `The current time is ${new Date().toLocaleTimeString()}` },

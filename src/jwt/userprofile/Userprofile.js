@@ -25,7 +25,7 @@ const UserProfile = () => {
       navigate('/pages/playwin/PlayLayout');
     } else if (key === 4) {
       localStorage.removeItem('token');
-      localStorage.removeItem('username');  // Clear username on logout
+      localStorage.removeItem('username');  
       navigate('/');
     }
   };
@@ -40,9 +40,7 @@ const UserProfile = () => {
 
   return (
     <div className='flex justify-between items-center p-4 bg-#001529 text-white'>
-      <div className='text-xl font-bold'>
-        {username ? `Welcome, ${username}` : 'Login'} {/* Display username or 'Login' */}
-      </div>
+      
       <div>
         <Dropdown overlay={menu} placement="bottomRight">
           <Avatar shape="square" size="small" className="bg-blue-500">

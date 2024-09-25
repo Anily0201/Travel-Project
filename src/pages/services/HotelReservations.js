@@ -8,7 +8,7 @@ const HotelReservations = () => {
       id: 1,
       name: 'Luxury Resort & Spa',
       location: 'Bora Bora, French Polynesia',
-      imageUrl: 'https://source.unsplash.com/800x600/?hotel',
+      imageUrl: 'https://www.hotelchicagowestloop.com/wp-content/uploads/2024/02/Making-Group-Hotel-Reservations-Tips-for-Large-Parties.png',
       price: '$300/Night',
       bookingLink: '/booking/luxury-resort',
     },
@@ -16,7 +16,7 @@ const HotelReservations = () => {
       id: 2,
       name: 'City View Hotel',
       location: 'New York City, USA',
-      imageUrl: 'https://source.unsplash.com/800x600/?city-hotel',
+      imageUrl: 'https://www.hotelchicagowestloop.com/wp-content/uploads/2024/02/Making-Group-Hotel-Reservations-Tips-for-Large-Parties.png',
       price: '$200/Night',
       bookingLink: '/booking/city-view-hotel',
     },
@@ -24,7 +24,7 @@ const HotelReservations = () => {
       id: 3,
       name: 'Beachfront Villa',
       location: 'Maldives',
-      imageUrl: 'https://source.unsplash.com/800x600/?beach-hotel',
+      imageUrl: 'https://www.hotelchicagowestloop.com/wp-content/uploads/2024/02/Making-Group-Hotel-Reservations-Tips-for-Large-Parties.png',
       price: '$400/Night',
       bookingLink: '/booking/beachfront-villa',
     },
@@ -32,12 +32,10 @@ const HotelReservations = () => {
 
   return (
     <div>
-      {/* Hero section with background image */}
-      <div className="bg-cover bg-center h-96 flex items-center justify-center" style={{ backgroundImage: 'url("https://source.unsplash.com/1600x900/?hotels")' }}>
+      <div className="bg-cover bg-center h-96 flex items-center justify-center" style={{ backgroundImage: 'url("https://www.erevmax.com/blog/wp-content/uploads/2021/09/3-Essential-Tips-to-Choose-the-Right-Hotel-Booking-System.jpg")' }}>
         <h1 className="text-4xl font-bold text-white text-center">Book Your Stay</h1>
       </div>
 
-      {/* Hotel listings section */}
       <div className="container mx-auto my-8">
         <h2 className="text-3xl font-semibold mb-6">Find Your Perfect Accommodation</h2>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">

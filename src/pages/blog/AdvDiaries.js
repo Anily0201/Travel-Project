@@ -7,7 +7,7 @@ const AdvDiaries = () => {
     {
       id: 1,
       title: "Hiking the Inca Trail to Machu Picchu",
-      image: "https://source.unsplash.com/800x600/?inca-trail",
+      image: "https://img.freepik.com/free-photo/planning-traveling-trip-notes-wanderkust_53876-127491.jpg?size=626&ext=jpg",
       author: "John Doe",
       date: "February 10, 2023",
       content: "Embark on an epic journey through the rugged Andes Mountains on the historic Inca Trail. Experience breathtaking scenery, ancient ruins, and the awe-inspiring beauty of Machu Picchu.",
@@ -15,7 +15,7 @@ const AdvDiaries = () => {
     {
       id: 2,
       title: "Climbing Mount Kilimanjaro: Roof of Africa",
-      image: "https://source.unsplash.com/800x600/?mount-kilimanjaro",
+      image: "https://img.freepik.com/free-photo/planning-traveling-trip-notes-wanderkust_53876-127491.jpg?size=626&ext=jpg",
       author: "Jane Smith",
       date: "March 20, 2023",
       content: "Challenge yourself to summit the tallest peak in Africa and witness the stunning sunrise from Uhuru Peak. Explore diverse ecosystems, from lush rainforests to barren alpine deserts, on this unforgettable adventure.",
@@ -23,7 +23,7 @@ const AdvDiaries = () => {
     {
       "id": 3,
       "title": "Exploring the Grand Canyon: Nature's Masterpiece",
-      "image": "https://source.unsplash.com/800x600/?grand-canyon",
+      "image": "https://img.freepik.com/free-photo/planning-traveling-trip-notes-wanderkust_53876-127491.jpg?size=626&ext=jpg",
       "author": "Michael Johnson",
       "date": "April 5, 2023",
       "content": "Embark on a journey into the depths of the Grand Canyon, one of the world's most magnificent natural wonders. Traverse rugged trails, marvel at towering cliffs, and experience the raw beauty of this iconic landscape.",
@@ -31,7 +31,7 @@ const AdvDiaries = () => {
     {
       "id": 4,
       "title": "Rafting the Rapids of the Colorado River",
-      "image": "https://source.unsplash.com/800x600/?colorado-river",
+      "image": "https://img.freepik.com/free-photo/planning-traveling-trip-notes-wanderkust_53876-127491.jpg?size=626&ext=jpg",
       "author": "Emily Davis",
       "date": "May 15, 2023",
       "content": "Experience the thrill of white-water rafting on the mighty Colorado River. Navigate through exhilarating rapids, surrounded by stunning canyon walls and pristine wilderness, on this adrenaline-fueled adventure.",
@@ -39,43 +39,12 @@ const AdvDiaries = () => {
     {
       "id": 5,
       "title": "Trekking the Annapurna Circuit: Himalayan Odyssey",
-      "image": "https://source.unsplash.com/800x600/?annapurna-circuit",
+      "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTIeuRhozzprOsbiUeZyvkbZ41DL6ldYmfU-g&s",
       "author": "David Brown",
       "date": "June 25, 2023",
       "content": "Embark on an epic trek around the Annapurna Massif, traversing high mountain passes, picturesque villages, and breathtaking landscapes. Discover the rich culture and warm hospitality of the Himalayan people on this unforgettable journey.",
     },
-    {
-      "id": 6,
-      "title": "Diving into the Underwater Paradise of the Great Barrier Reef",
-      "image": "https://source.unsplash.com/800x600/?great-barrier-reef",
-      "author": "Sophia Roberts",
-      "date": "July 10, 2023",
-      "content": "Immerse yourself in the vibrant marine life of the Great Barrier Reef, the world's largest coral reef system. Dive into crystal-clear waters, encounter colorful coral gardens, and swim alongside majestic sea creatures on this bucket-list adventure.",
-    },
-    {
-      "id": 7,
-      "title": "Exploring the Lost City of Petra: Rose-Red Wonder",
-      "image": "https://source.unsplash.com/800x600/?petra",
-      "author": "William Anderson",
-      "date": "August 20, 2023",
-      "content": "Embark on a journey back in time to the ancient city of Petra, carved into the rose-red cliffs of Jordan. Wander through narrow sandstone canyons, marvel at intricately carved facades, and uncover the secrets of this UNESCO World Heritage Site.",
-    },
-    {
-      "id": 8,
-      "title": "Cycling the Camino de Santiago: Pilgrim's Path",
-      "image": "https://source.unsplash.com/800x600/?camino-de-santiago",
-      "author": "Emma Wilson",
-      "date": "September 5, 2023",
-      "content": "Follow in the footsteps of pilgrims on the historic Camino de Santiago, a network of ancient pilgrimage routes leading to the shrine of the apostle St. James in Santiago de Compostela. Cycle through picturesque countryside, charming villages, and medieval towns on this spiritual journey.",
-    },
-    {
-      "id": 9,
-      "title": "Skiing the Slopes of the Swiss Alps: Winter Wonderland",
-      "image": "https://source.unsplash.com/800x600/?swiss-alps",
-      "author": "Oliver Taylor",
-      "date": "October 15, 2023",
-      "content": "Experience the thrill of skiing in the breathtaking landscapes of the Swiss Alps, home to some of the world's most renowned ski resorts. Glide down pristine slopes, soak in panoramic views, and indulge in après-ski delights in this alpine paradise.",
-    }
+  
   ]);
 
 
@@ -83,7 +52,7 @@ const AdvDiaries = () => {
     {
       "id": 1,
       "title": "Trekking to Everest Base Camp: Roof of the World",
-      "image": "https://source.unsplash.com/800x600/?everest-base-camp",
+      "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTIeuRhozzprOsbiUeZyvkbZ41DL6ldYmfU-g&s",
       "author": "Emma Roberts",
       "date": "November 5, 2023",
       "content": "Embark on an unforgettable journey to the base of the world's highest peak, Mount Everest. Trek through remote mountain villages, dense forests, and rugged terrain, while soaking in breathtaking views of snow-capped peaks and glaciers along the way."
@@ -91,7 +60,7 @@ const AdvDiaries = () => {
     {
       "id": 2,
       "title": "White Water Rafting on the Trishuli River: Adrenaline Rush",
-      "image": "https://source.unsplash.com/800x600/?trishuli-river",
+      "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTIeuRhozzprOsbiUeZyvkbZ41DL6ldYmfU-g&s",
       "author": "James Anderson",
       "date": "December 10, 2023",
       "content": "Experience the thrill of white water rafting on the exhilarating rapids of the Trishuli River in Nepal. Navigate through challenging rapids, cascading waterfalls, and breathtaking gorges, while enjoying the stunning natural beauty of the Himalayas."
@@ -99,7 +68,7 @@ const AdvDiaries = () => {
     {
       "id": 3,
       "title": "Paragliding Over Pokhara Valley: Bird's Eye View",
-      "image": "https://source.unsplash.com/800x600/?pokhara-paragliding",
+      "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTIeuRhozzprOsbiUeZyvkbZ41DL6ldYmfU-g&s",
       "author": "Sophia Johnson",
       "date": "January 15, 2024",
       "content": "Soar like a bird above the picturesque Pokhara Valley on an exhilarating paragliding adventure. Enjoy panoramic views of serene lakes, lush valleys, and towering mountains, while experiencing the freedom of flight in one of the world's premier paragliding destinations."

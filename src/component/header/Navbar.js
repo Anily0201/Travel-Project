@@ -1,11 +1,10 @@
-import React, { useState } from 'react';
-import { Link, useNavigate, NavLink } from 'react-router-dom';
+import React, { useState, useEffect } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
 import { FaUser, FaShoppingCart } from 'react-icons/fa';
 import logo from '../assets/logo.jpg.png';
-// import SearchBar from '../SearchBar';
 import OrderPopup from '../OrderPopup/OrderPopup';
 import Order from '../../pages/shop/component2/user/Order';
-import { Token, username } from '../../jwt/authentication/Storage';
+import { jwtDecode } from 'jwt-decode';
 import { Badge, Drawer, Image, Button, message, Menu, Dropdown } from 'antd';
 import { DeleteOutlined, MinusCircleFilled, PlusCircleFilled, } from '@ant-design/icons';
 import { useAppContext } from '../context/ContextApi';
@@ -13,7 +12,7 @@ import UserProfile from '../../jwt/userprofile/Userprofile';
 
 
 const Navbar = () => {
-  const { token, username } = Token() || {};
+
   const [orderPopup, setOrderPopup] = useState(false);
   const handleOrderPopup = () => {
     setOrderPopup(true);
@@ -25,6 +24,20 @@ const Navbar = () => {
   const [open, setOpen] = React.useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
 
+  const [username, setUsername] = useState('');
+  const [token, setToken] = useState(null);
+
+  useEffect(() => {
+    const storedToken = localStorage.getItem('token');
+
+    if (storedToken) {
+      setToken(storedToken);
+      const decodedToken = jwtDecode(storedToken);
+      setUsername(decodedToken.UserName);
+      // console.log(decodedToken )
+      // console.log(username)
+    }
+  }, []);
 
   const showModal = () => {
     if (token) {
@@ -139,16 +152,16 @@ const Navbar = () => {
   const menuDestinations = (
     <Menu>
       <Menu.Item key="1">
-        <Link to="/Destination/NepalTour">Nepal</Link>
+        <Link to="/Destination/Nepal">Nepal</Link>
       </Menu.Item>
       <Menu.Item key="2">
-        <Link to="/Destination/BhutanTour">Bhutan</Link>
+        <Link to="/Destination/Bhutan">Bhutan</Link>
       </Menu.Item>
       <Menu.Item key="3">
-        <Link to="/Destination/IndiaTour">India</Link>
+        <Link to="/Destination/India">India</Link>
       </Menu.Item>
       <Menu.Item key="4">
-        <Link to="/Destination/MultipleCountry">Multiple Country</Link>
+        <Link to="/Destination/Destinations">Multiple Country</Link>
       </Menu.Item>
     </Menu>
   );
@@ -350,15 +363,17 @@ const Navbar = () => {
           </div>
 
         )}
-        <div className="flex items-center">
-          <div className="text-white font-semibold ">{username}</div>
-
+        <div className="flex items-center space-x-2">
           {token ? (
-            <UserProfile />
+            <div className="flex items-center space-x-2 text-white font-semibold">
+              <UserProfile />
+              <span className='pr-2'>{username}</span>
+            </div>
           ) : (
-            <Link to="/auth/Login" className="text-white text-lg font-semibold mr-2">Login</Link>
+            <Link to="/auth/Login" className="text-white text-lg font-semibold pr-2">Login</Link>
           )}
         </div>
+
       </div>
     </nav>
   );

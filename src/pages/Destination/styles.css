@@ -13,7 +13,7 @@
   object-fit: cover;
 }
 
-.destination-info {
+.swiperInfo-info {
   position: absolute;
   bottom: 0;
   left: 0;
@@ -22,13 +22,13 @@
   padding: 10px;
 }
 
-.destination-info h3 {
+.swiperInfo-info h3 {
   margin: 0;
   font-size: 1.5rem;
   color: #fff;
 }
 
-.destination-info p {
+.swiperInfo-info p {
   margin: 0;
   font-size: 1rem;
   color: #fff;

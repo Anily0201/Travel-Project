@@ -16,7 +16,6 @@ import Destinations from './pages/Destination/Destinations';
 import NepalTour from './pages/Destination/NepalTour';
 import IndiaTour from './pages/Destination/IndiaTour';
 import BhutanTour from './pages/Destination/BhutanTour';
-import MultipleCountry from './pages/Destination/MultipleCountry';
 import Shop from './pages/shop/Shop';
 // import About from './pages/about/About';
 import About from './pages/about/About'
@@ -44,8 +43,9 @@ import BookingLayout from './pages/mybooking/BookingLayout';
 // import BlogDashboard from './pages/BlogDashboard/BlogDashboard';
 import UserProfile from './component/blogs/UserProfile/UserProfile';
 import Groups from './component/blogs/Groups/Groups';
-import AdminPage from './pages/admin/AdminPage';
 import Home from './pages/homePage/Home';
+import Edashboard from './pages/admin/eCommerce/Edashboard';
+import AdminDashboard from './pages/admin/adminHome/AdminDashboard';
 
 
 const App = () => {
@@ -74,10 +74,9 @@ const App = () => {
           <Route path="/about/Awards" element={<Awards />} />
           <Route path="/about/Career" element={<Career />} />
           <Route path="/about/LatestTripRv" element={<LatestTripRv />} />
-          <Route path="/Destination/NepalTour" element={<NepalTour />} />
-          <Route path="/Destination/IndiaTour" element={<IndiaTour />} />
-          <Route path="/Destination/BhutanTour" element={<BhutanTour />} />
-          <Route path="/Destination/MultipleCountry" element={<MultipleCountry />} />
+          <Route path="/Destination/Nepal" element={<NepalTour />} />
+          <Route path="/Destination/India" element={<IndiaTour />} />
+          <Route path="/Destination/Bhutan" element={<BhutanTour />} />
           <Route path="/About" element={<About />} />
           <Route path="/blog/blog" element={<Blog />} />
           <Route path="/blog/TravelStories" element={<TravelStories />} />
@@ -99,7 +98,7 @@ const App = () => {
           <Route path="/pages/mybooking/BookingLayout" element={<BookingLayout />} />
           <Route path="/service/:id" element={<ServiceDetail />} />
           <Route path="userdetail/:id" element={<UserDetail />} />
-          <Route path="/AdminPage" element={<AdminPage />} />
+
 
 
           {/* <Route path="/" element={<BlogDashboard />} /> */}
@@ -107,8 +106,18 @@ const App = () => {
           <Route path="/groups" element={<Groups />} />
 
 
+
+
+
+          {/* -------------- for Admin panel ----------------- */}
+          <Route path="/AdminDashboard" element={<AdminDashboard />} />
+          <Route path="/eCommerce/Edashboard" element={<Edashboard />} />
+
+
         </Routes>
+
         <Footer />
+
       </div>
     </Router>
   );

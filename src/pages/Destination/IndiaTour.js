@@ -160,7 +160,7 @@ const IndiaTour = () => {
 
   return (
     <div>
-      <div className="relative h-96 bg-cover bg-center" style={{ backgroundImage: 'url("https://source.unsplash.com/1600x900/?india")' }}>
+      <div className="relative h-96 bg-cover bg-center" style={{ backgroundImage: 'url("https://www.travelsafe-abroad.com/wp-content/uploads/maxresdefault-4.jpg")' }}>
         <div className="absolute inset-0 bg-black opacity-50"></div>
         <div className="absolute inset-0 flex items-center justify-center">
           <div className="text-center text-white">

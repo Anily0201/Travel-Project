@@ -1,0 +1,27 @@
+/* TableComponent.css */
+.custom-pagination .ant-pagination-item {
+    border-radius: 4px;
+    border: 1px solid #d9d9d9;
+  }
+  
+  .custom-pagination .ant-pagination-item-link {
+    border-radius: 4px;
+  }
+  
+  .custom-pagination .ant-pagination-item-active {
+    background-color: #7fb6ea;
+    border-color: #57a4eb;
+    color: #fff;
+  }
+  
+  .custom-pagination .ant-pagination-prev,
+  .custom-pagination .ant-pagination-next {
+    border-radius: 4px;
+  }
+  
+  .custom-pagination .ant-pagination-prev:hover,
+  .custom-pagination .ant-pagination-next:hover {
+    background-color: #e6f7ff;
+    border-color: #1087d1;
+  }
+  

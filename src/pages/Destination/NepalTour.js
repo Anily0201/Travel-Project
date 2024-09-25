@@ -1,17 +1,15 @@
-import React , { useRef, useState } from 'react'
+import React, { useRef, useState } from 'react'
 import { Swiper, SwiperSlide } from 'swiper/react';
-
-
 import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 import 'swiper/css/autoplay';
 import './styles.css';
-import  { Autoplay, Pagination, Navigation } from 'swiper/modules';
+import { Autoplay, Pagination, Navigation } from 'swiper/modules';
 import { FaMapMarkerAlt } from 'react-icons/fa';
 
 
-const destinations =[
+const swiperInfo = [
   {
     "id": 1,
     "name": "Mount Everest Base Camp",
@@ -84,9 +82,9 @@ const destinations =[
     "location": "Mustang, Nepal",
     "image": "https://www.enepaltreks.com/wp-content/uploads/2018/04/umustang.jpg"
   },
- 
+
 ]
-;
+  ;
 const NepalTour = () => {
 
   const activities = [
@@ -148,20 +146,21 @@ const NepalTour = () => {
 
   // Render each activity as a card
   const renderActivityCards = () => {
-    return activities.map((activity, index) => (
-      <div key={index} className={`rounded-lg overflow-hidden shadow-md p-6 text-center ${activity.color}`}>
-        <span className="text-4xl mb-2">{activity.icon}</span>
-        <h3 className="text-white text-xl font-semibold mb-4">{activity.title}</h3>
-        <p className="text-white">{activity.description}</p>
-      </div>
-    ));
+    return (
+      activities.map((activity, index) => (
+        <div key={index} className={`rounded-lg overflow-hidden shadow-md p-6 text-center ${activity.color}`}>
+          <span className="text-4xl mb-2">{activity.icon}</span>
+          <h3 className="text-white text-xl font-semibold mb-4">{activity.title}</h3>
+          <p className="text-white">{activity.description}</p>
+        </div>
+      )));
   };
 
 
 
   return (
     <div>
-      <div className="relative h-96 bg-cover bg-center" style={{ backgroundImage: 'url("https://source.unsplash.com/1600x900/?nepal")' }}>
+      <div className="relative h-96 bg-cover bg-center" style={{ backgroundImage: 'url("https://dynamic-media-cdn.tripadvisor.com/media/photo-o/0d/d6/96/36/photo4jpg.jpg?w=1400&h=1400&s=1")' }}>
         <div className="absolute inset-0 bg-black opacity-50"></div>
         <div className="absolute inset-0 flex items-center justify-center">
           <div className="text-center text-white">
@@ -210,48 +209,48 @@ const NepalTour = () => {
               <p className="text-lg mb-4">Experience the breathtaking landscapes of the Annapurna region on this iconic trek.</p>
               <p className="text-lg mb-4">Duration: 15 days</p>
               <p className="text-lg mb-4">Difficulty: Moderate to Difficult</p>
-             <button className="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded">Explore More</button>
+              <button className="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded">Explore More</button>
             </div>
           </div>
         </div>
         <div className="container mx-auto px-4 py-8">
-      <h2 className="text-3xl font-bold text-center mb-8">Things to Do in Nepal</h2>
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-        {renderActivityCards()}
-      </div>
-    </div>
+          <h2 className="text-3xl font-bold text-center mb-8">Things to Do in Nepal</h2>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {renderActivityCards()}
+          </div>
+        </div>
       </div>
       <div className="text-center">
-            <h1 className="text-6xl font-bold mb-0">Top 10 Destination </h1>
-            <p className="text-lg mb-4">(that you must have to visit)</p>
-          </div>
-          <div >
-      <Swiper
-        slidesPerView={4}
-        spaceBetween={20}
-        loop={true}
-        autoplay={{
-          delay: 2000,
-          disableOnInteraction: false,
-        }}
-        pagination={{
-          clickable: true,
-        }}
-        navigation={true}
-        modules={[Autoplay, Pagination, Navigation]}
-        className="mySwiper"
-      >
-        {destinations.map(destination => (
-          <SwiperSlide key={destination.id}>
-            <img src={destination.image} alt={destination.name} />
-            <div className="destination-info">
-              <h3>{destination.name}</h3>
-              <p><FaMapMarkerAlt /> {destination.location}</p>
-            </div>
-          </SwiperSlide>
-        ))}
-      </Swiper>
-    </div>
+        <h1 className="text-6xl font-bold mb-0">Top 10 Destination </h1>
+        <p className="text-lg mb-4 text-green-500"> you must have to visit</p>
+      </div>
+      <div >
+        <Swiper
+          slidesPerView={4}
+          spaceBetween={20}
+          loop={true}
+          autoplay={{
+            delay: 2000,
+            disableOnInteraction: false,
+          }}
+          pagination={{
+            clickable: true,
+          }}
+          navigation={true}
+          modules={[Autoplay, Pagination, Navigation]}
+          className="mySwiper"
+        >
+          {swiperInfo.map(swiperInfo => (
+            <SwiperSlide key={swiperInfo.id}>
+              <img src={swiperInfo.image} alt={swiperInfo.name} />
+              <div className="swiperInfo-info">
+                <h3>{swiperInfo.name}</h3>
+                <p><FaMapMarkerAlt /> {swiperInfo.location}</p>
+              </div>
+            </SwiperSlide>
+          ))}
+        </Swiper>
+      </div>
     </div>
   );
 };

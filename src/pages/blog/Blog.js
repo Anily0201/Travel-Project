@@ -1,38 +1,65 @@
-import React, { useState } from 'react';
+import React, { useState , useEffect } from 'react';
 import { Layout, Input, Button, message, Avatar, Modal, Upload, Card } from 'antd';
 import { UserOutlined, UploadOutlined } from '@ant-design/icons';
 import TopBar from '../../component/layout/blogLayout/TopBar';
 import LeftSidebar from '../../component/layout/blogLayout/LeftSidebar';
 import RightSidebar from '../../component/layout/blogLayout/RightSidebar';
+import axios from 'axios';
+import { Token } from '../../jwt/authentication/Storage';
+
 
 const { Content } = Layout;
 
 const Blog = () => {
+
+
+
   const [blogs, setBlogs] = useState([]);
   const [newBlogTitle, setNewBlogTitle] = useState('');
   const [newBlogContent, setNewBlogContent] = useState('');
   const [imageFile, setImageFile] = useState(null);
   const [isModalVisible, setIsModalVisible] = useState(false);
 
-  const handlePostBlog = () => {
-    if (newBlogTitle.trim() !== '' && newBlogContent.trim() !== '') {
-      const newBlog = {
-        id: blogs.length + 1,
-        title: newBlogTitle.trim(),
-        content: newBlogContent.trim(),
-        author: 'Jay Yadav',
-        date: new Date().toLocaleDateString(),
-        image: imageFile ? URL.createObjectURL(imageFile) : null,
-      };
-      setBlogs([newBlog, ...blogs]);
 
-      // Reset the form fields for the next post
-      setNewBlogTitle('');
-      setNewBlogContent('');
-      setImageFile(null);
-      setIsModalVisible(false);
+  const tokenData = Token();
+  const loggedInUser = tokenData?.username || 'Guest';
 
-      message.success('Blog posted successfully!');
+  useEffect(() => {
+    fetchBlogs();
+  }, []);
+  
+  const fetchBlogs = async () => {
+    try {
+      const response = await axios.get('https://localhost:7292/api/Blog'); // Replace with your backend API endpoint
+      setBlogs(response.data);
+    } catch (error) {
+      console.error("Error fetching blogs:", error);
+      message.error("Failed to load blogs.");
+    }
+  };
+
+  const handlePostBlog = async () => {
+    if (newBlogTitle.trim() && newBlogContent.trim()) {
+      const formData = new FormData();
+      formData.append('title', newBlogTitle.trim());
+      formData.append('content', newBlogContent.trim());
+      formData.append('author', loggedInUser); 
+      formData.append('image', imageFile); // Append the image file
+  
+      try {
+        const response = await axios.post('https://localhost:7292/api/Blog', formData, {
+          headers: {
+             'Content-Type': 'multipart/form-data'
+          //  'Authorization': `Bearer ${tokenData?.token}` 
+            }
+        });
+        setBlogs([response.data, ...blogs]);
+        message.success('Blog posted successfully!');
+        resetForm();
+      } catch (error) {
+        console.error("Error posting blog:", error);
+        message.error('Failed to post the blog.');
+      }
     } else {
       message.error('Please enter a title and some content before posting.');
     }
@@ -42,9 +69,15 @@ const Blog = () => {
     setImageFile(file);
   };
 
+  const resetForm = () => {
+    setNewBlogTitle('');
+    setNewBlogContent('');
+    setImageFile(null);
+    setIsModalVisible(false);
+  };
+
   const handleCancel = () => {
     setIsModalVisible(false);
-    // Ensure form resets when the modal closes
     setNewBlogTitle('');
     setNewBlogContent('');
     setImageFile(null);
@@ -72,28 +105,17 @@ const Blog = () => {
                 <div className="flex items-center mb-4">
                   <Avatar icon={<UserOutlined />} className="mr-4" />
                   <div>
-                    <p className="font-semibold">{blog.author}</p>
-                    <p className="text-gray-500">{blog.date}</p>
+                    <p className="font-semibold">{blog.username}</p>
+                    <p className="text-gray-500">{blog.createdDate}</p>
                   </div>
                 </div>  
-                <img src={blog.image} alt={blog.title} className="w-full h-64 object-cover object-center" />
+                <img src={blog.imageFile} alt={blog.title} className="w-full h-64 object-cover object-center" />
                 <div className="p-6">
                   <h2 className="text-xl font-bold mb-2">{blog.title}</h2>
-                  <p className="text-gray-800">{blog.content}</p>
+                  <p className="text-gray-800">{blog.description}</p>
                 </div>
               </Card>
-              // <div key={blog.id} className="bg-white rounded-lg shadow-md p-6 max-h-64 ">
-              //   <div className="flex items-center mb-4">
-              //     <Avatar icon={<UserOutlined />} className="mr-4" />
-              //     <div>
-              //       <p className="font-semibold">{blog.author}</p>
-              //       <p className="text-gray-500">{blog.date}</p>
-              //     </div>
-              //   </div>
-              //   <h2 className="font-bold text-xl">{blog.title}</h2>
-              //   <p className="mt-4 text-ellipsis overflow-hidden">{blog.content}</p>
-              //   {blog.image && <img src={blog.image} alt={blog.title} className="mt-2 max-h-72 object-cover" />}
-              // </div>
+             
             ))}
           </div>
         </Content>

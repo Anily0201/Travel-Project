@@ -29,7 +29,7 @@ const TravelInsurance = () => {
   return (
     <div>
       {/* Hero section with background image */}
-      <div className="bg-cover bg-center h-96 flex items-center justify-center" style={{ backgroundImage: 'url("https://source.unsplash.com/1600x900/?travel-insurance")' }}>
+      <div className="bg-cover bg-center h-96 flex items-center justify-center" style={{ backgroundImage: 'url("https://static.toiimg.com/photo/106630696.cms")' }}>
         <h1 className="text-4xl font-bold text-white text-center">Travel Insurance</h1>
       </div>
 
