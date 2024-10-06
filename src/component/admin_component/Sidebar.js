@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { HomeOutlined, ShoppingCartOutlined, SettingOutlined, BellOutlined, MessageOutlined, MenuFoldOutlined, MenuUnfoldOutlined, } from '@ant-design/icons';
-import { Switch } from 'antd'; // For the Mode switch
+import { Layout, Switch } from 'antd'; 
 import { FaBlog } from "react-icons/fa";
 import { MdTravelExplore } from "react-icons/md";
 import { Link } from 'react-router-dom';
@@ -19,22 +19,19 @@ const Sidebar = () => {
   
 
   return (
-    
+    <Layout>
     <div className={`bg-gray-800 text-white h-screen ${isCollapsed ? 'w-16' : 'w-56'} transition-width duration-300`}>
-      {/* Logo */}
       <div className="p-4">
         <button onClick={toggleCollapse} className="focus:outline-none text-white">
           {isCollapsed ? <MenuUnfoldOutlined /> : <MenuFoldOutlined />}
         </button>
       </div>
 
-      {/* Menu Items */}
       <ul className="mt-4">
         <li className="p-4 hover:bg-gray-700 cursor-pointer">
           <HomeOutlined /> {!isCollapsed && <span><Link to="/AdminDashboard">Home</Link></span>}
         </li>
 
-        {/* E-commerce */}
         <li className="p-4 hover:bg-gray-700 cursor-pointer" onClick={() => toggleSubMenu('ecommerce')}>
           <ShoppingCartOutlined /> {!isCollapsed && <span>E-commerce</span>}
         </li>
@@ -50,7 +47,6 @@ const Sidebar = () => {
           </ul>
         )}
 
-        {/* Travel */}
         <li className=" flex p-4 hover:bg-gray-700 cursor-pointer" onClick={() => toggleSubMenu('travel')}>
           <MdTravelExplore /> {!isCollapsed && <span>Travel</span>}
         </li>
@@ -97,6 +93,7 @@ const Sidebar = () => {
         </li>
       </ul>
     </div>
+    </Layout>
   );
 };
 
